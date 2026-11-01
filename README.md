@@ -1,88 +1,12 @@
-# amazon-sentiment-analysis
-# Amazon Reviews Sentiment Analysis 🛒🔍
+# Review Rating Classification — learning baseline
 
-This project analyzes customer reviews from Amazon using Natural Language Processing (NLP) techniques to classify them as **positive**, **negative**, or **neutral** using a Machine Learning model.
-
----
-
-## 📁 Dataset
-
-The dataset contains Amazon product reviews with:
-- `Text` reviews
-- `Score` (1 to 5)
-- Other metadata
-
-We mainly used:
-- `reviewText` ➜ the written customer review
-- `Score` ➜ the actual rating (target label)
-
----
-
-## 🧠 Project Goals
-
-- Clean and preprocess the reviews
-- Use VADER for sentiment scoring
-- Train a **Logistic Regression** model on processed data
-- Evaluate model accuracy
-
----
-
-## ⚙️ Tools and Libraries Used
-
-- **pandas, numpy** – data manipulation
-- **matplotlib, seaborn** – data visualization
-- **NLTK, TextBlob, VADER** – for text preprocessing and sentiment analysis
-- **Scikit-learn (sklearn)** – for ML model, pipeline, vectorization, and evaluation
-
----
-
-## 🔄 Data Preprocessing Steps
-
-1. **Clean the text**:
-   - Remove punctuation
-   - Remove stopwords
-   - Stemming with `PorterStemmer`
-
-2. **VADER Sentiment Analysis**:
-   - Add a `polarity_score` to each review using `SentimentIntensityAnalyzer`
-
-3. **Preprocess Text**:
-   - Create a new column: `review_stemmed` with cleaned/stemmed version of the review
-
----
-
-## 🧪 Model Training
-
-- **Features used**: `review_stemmed`
-- **Target label**: `Score`
-- Used `CountVectorizer` ➜ then `TF-IDF` ➜ then `StandardScaler`
-- Trained with **Logistic Regression**
-
-Used `train_test_split` to split the data (80% train - 20% test)
-
----
-
-## 📊 Model Evaluation
-
-- Accuracy is printed for both:
-  - **Training set**
-  - **Test set**
-- You can also use `classification_report()` for more metrics (precision, recall, f1-score)
-
----
-
-## 📈 Future Improvements
-
-- Use other models: Random Forest, XGBoost
-- Try `Lemmatization` instead of Stemming
-- Add Hyperparameter tuning
-- Improve class balancing if needed
-
----
-
-## ✅ How to Run
-
-1. Clone this repo
-2. Make sure to install requirements:
-```bash
-pip install -r requirements.txt
+An extracted, runnable TF-IDF/logistic-regression baseline for five-level review Score.
+This repairs the original notebook's use-before-definition and missing scikit-learn dependency.
+Python 3.12: install `requirements.txt`, then Run All in the notebook from this directory.
+It defaults to clearly labelled synthetic reviews for an offline smoke path, not an Amazon benchmark.
+Set `AMAZON_REVIEWS_CSV` to your authorized real Text/Score CSV for actual data analysis.
+Duplicate review text cannot cross the split; conflicting labels are rejected. A single split does
+not prove user/product independence or production accuracy. No real-data metric is fabricated.
+Tests: install `requirements-dev.txt`, then `python -m pytest -q` here.
+Earlier credential-shaped matches in historical notebook output were sklearn HTML false positives;
+no key rotation or history rewrite is justified by them. This remains secondary NLP learning work.
